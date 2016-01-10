@@ -6,6 +6,27 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "react-native": "^0.18.0-rc"
-  }
+    "react-native": "0.17.0",
+    "lodash": "^3.0.0",
+    "react": "0.14.5",
+    "react-dom": "0.14.5"
+  },
+  "devDependencies": {
+    "gulp": "",
+    "browserify": "",
+    "aliasify": "",
+    "gulp": "",
+    "vinyl-buffer": "",
+    "babelify": "",
+    "gulp-sourcemaps": "",
+    "gulp-uglify": "",
+    "vinyl-source-stream": "",
+    "babel-preset-react": "",
+    "babel-preset-es2015": ""
+  },
+  "aliasify": {
+        "aliases": {
+            "react-native": "react"
+        }
+    }
 }
