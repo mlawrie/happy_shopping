@@ -5,5 +5,5 @@
 
 ## Running
 - To run the iOS app, open ios/happy_shopping.xcodeproj with XCode and compile/run.
-- To run the web app, run `grunt` and open ../happy_shopping_dist_web/index.html in your browser
+- To run the web app, run `grunt` and open `../happy_shopping_dist_web/index.html` in your browser
 

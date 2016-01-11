@@ -15,7 +15,6 @@ gulp.task('browserify', () => {
     .transform(babelify, {presets: ["es2015", "react"]})
     .transform(webify)
     .transform(aliasify)
-    .pipe(uglify())
     .bundle()
     .pipe(source('index.js'))
     .pipe(buffer())
