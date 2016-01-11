@@ -1,12 +1,14 @@
 'use strict';
 
-import React, {AppRegistry, Component} from 'react-native';
+import React, {AppRegistry, Component, ScrollView} from 'react-native';
 const ShoppingList = require('./shopping_list');
 
 class happy_shopping extends Component {
   render() {
     return (
-      <ShoppingList/>
+      <ScrollView>
+        <ShoppingList/>
+      </ScrollView>
     );
   }
 }

@@ -5,18 +5,37 @@ const styleSheet = require('./stylesheet');
 const Button = require('./button');
 const {Component, Text, View} = React;
 const ListItem = require('./list_item');
+const _ = require('lodash');
+
+let lastId = 0;
 
 class ShoppingList extends Component {
   constructor(props) {
     super(props);
     this.state = {items: []};
   }
+  
   addItem() {
-    this.setState({items: this.state.items.concat(['New Item'])});
+    lastId += 1;
+    this.setState({items: this.state.items.concat([{name: '', id: lastId}])});
+  }
+
+  removeItem(item) {
+    this.setState({items: _.without(this.state.items, item)}); 
+  }
+
+  changeItem(item, name) {
+    let newItems = this.state.items.concat([]);
+    newItems[newItems.indexOf(item)] = Object.assign({}, item, {name: name});
+    this.setState({items: newItems});
   }
 
   render() {
-    const renderedItems = this.state.items.map((item, index) => <ListItem key={index} item={item} remove={() => {}}/>);
+    const renderedItems = this.state.items.map((item, index) =>
+      <ListItem key={index} item={item.name}
+        onChange={(name) => this.changeItem(item, name)}
+        onRemove={() => this.removeItem(item)}/>
+      );
 
     return <View tag="div" style={styles.container}>
         <Text tag="h1" style={styles.heading}>Shopping List</Text>
@@ -30,6 +49,10 @@ class ShoppingList extends Component {
 
 const styles = styleSheet({
   container: {
+    web: {
+      maxWidth: '600',
+      margin: '0 auto'
+    },
     padding: 10,
     paddingTop: 40
   },
@@ -42,7 +65,8 @@ const styles = styleSheet({
   },
   addItem: {
     web: {
-      textDecoration: 'none'
+      textDecoration: 'none',
+      display: 'block'
     },
     fontSize: 20,
     fontFamily: 'Helvetica',

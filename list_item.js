@@ -3,7 +3,7 @@
 const React = require('./crossplatform_react');
 const styleSheet = require('./stylesheet');
 const Button = require('./button');
-const {Component, Text, View} = React;
+const {Component, Text, View, TextInput} = React;
 
 class ListItem extends Component {
   constructor(props) {
@@ -12,33 +12,47 @@ class ListItem extends Component {
 
   render() {
     return <View tag="li" style={styles.container}>
-        <Text tag="h4" style={styles.heading}>{this.props.item}</Text>
-        <Button style={styles.removeItem} onPress={() => this.props.remove()} label="X"/>
+        <TextInput style={styles.input} placeholder="New Item" onChangeText={(text) => this.props.onChange(text)} value={this.props.item}/>
+        <Button style={styles.removeItem} onPress={() => this.props.onRemove()} label="X"/>
       </View>;
   }
 }
 
 const styles = styleSheet({
   container: {
+    web: {
+      paddingRight: 60
+    },
+    native: {
+      paddingRight: 50
+    },
     marginBottom: 20,
     position: 'relative',
     height: 40
   },
-  heading: {
+  input: {
+    web: {
+      display: 'block',
+      width: '100%',
+      border: 'none'
+    },
     textAlign: 'left',
     color: '#333333',
     fontSize: 20,
-    fontFamily: 'Helvetica',
-    paddingRight: 50
+    height: 40,
+    fontFamily: 'Helvetica'
   },
   removeItem: {
     native: {
       lineHeight: 30,
-      top: -40
+      top: -40,
+      right: -50
     },
     web: {
       top: 0,
-      lineHeight: '40px'
+      right: 0,
+      lineHeight: '40px',
+      textDecoration: 'none'
     },
     fontSize: 15,
     fontFamily: 'Helvetica',
@@ -48,9 +62,7 @@ const styles = styleSheet({
     height: 40,
     lineHeight: 30,
     textAlign: 'center',
-    position: 'absolute',
-    top: -40,
-    right: 0
+    position: 'absolute'
   }
 });
 

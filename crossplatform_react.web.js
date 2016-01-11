@@ -8,7 +8,17 @@ class BasicShim extends React.Component {
   }
 }
 
+class TextInputShim extends React.Component {
+  render() {
+    const onChange = (event) => {
+      this.props.onChangeText(event.target.value);
+    };
+    return <input type="text" {... _.omit(this.props, 'onChangeText')} onChange={onChange}/>
+  }
+}
+
 const shims = {
+  TextInput: TextInputShim,
   Text: BasicShim,
   View: BasicShim
 };
