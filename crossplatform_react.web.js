@@ -13,8 +13,4 @@ const shims = {
   View: BasicShim
 };
 
-if (typeof IS_WEB_APP != 'undefined' && IS_WEB_APP) {
-  module.exports = Object.assign({}, React, shims);
-} else {
-  module.exports = React;
-}
+module.exports = Object.assign({}, React, shims);

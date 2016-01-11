@@ -22,7 +22,8 @@
     "gulp-uglify": "",
     "vinyl-source-stream": "",
     "babel-preset-react": "",
-    "babel-preset-es2015": ""
+    "babel-preset-es2015": "",
+    "browserify-transform-tools": ""
   },
   "aliasify": {
         "aliases": {

@@ -1,8 +1,4 @@
 'use strict';
-const React = require('./crossplatform');
+const React = require('./crossplatform_react');
 
-if (typeof IS_WEB_APP != 'undefined' && IS_WEB_APP) {
-  module.exports = (styles) => styles;
-} else {
-  module.exports = (styles) => React.StyleSheet.create(styles);
-}
+module.exports = (styles) => React.StyleSheet.create(styles);
